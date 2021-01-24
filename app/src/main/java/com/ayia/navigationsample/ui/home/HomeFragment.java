@@ -38,7 +38,8 @@ public class HomeFragment extends Fragment {
 
         button.setOnClickListener(view -> {
 
-            HomeFragmentDirections.HomeBlankFragment action = HomeFragmentDirections.homeBlankFragment();
+            HomeFragmentDirections.HomeBlankFragmentAction action =
+                    HomeFragmentDirections.homeBlankFragmentAction();
             action.setType("Current Type");
             Navigation.findNavController(view).navigate(action);
 

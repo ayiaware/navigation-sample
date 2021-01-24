@@ -5,12 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -84,9 +81,20 @@ public class BlankFragment extends Fragment {
                               @Nullable Bundle savedInstanceState) {
         TextView tv = getView().findViewById(R.id.textView3);
 
-        String type = getString(R.string.my_args ) + " " + BlankFragmentArgs.fromBundle(getArguments()).getType();
+        final Button button = getView().findViewById(R.id.button3);
+
+        String type = getString(R.string.my_args ) + " " +
+                BlankFragmentArgs.fromBundle(getArguments()).getType();
 
         tv.setText(type);
+
+        button.setOnClickListener(view1 -> {
+
+            BlankFragmentDirections.BlankChildFragmentAction action =
+                    BlankFragmentDirections.blankChildFragmentAction("Current Item");
+            Navigation.findNavController(view).navigate(action);
+
+        });
     }
 
     @Override

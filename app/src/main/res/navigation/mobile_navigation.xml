@@ -11,8 +11,8 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/homeBlankFragment"
-            app:destination="@id/blankFragment2" />
+            android:id="@+id/homeBlankFragmentAction"
+            app:destination="@id/blankFragment" />
     </fragment>
 
     <fragment
@@ -27,13 +27,25 @@
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
-        android:id="@+id/blankFragment2"
+        android:id="@+id/blankFragment"
         android:name="com.ayia.navigationsample.BlankFragment"
-        android:label="fragment_blank"
+        android:label="{type}"
         tools:layout="@layout/fragment_blank" >
         <argument
             android:name="type"
             app:argType="string"
             android:defaultValue="default" />
+        <action
+            android:id="@+id/blankChildFragmentAction"
+            app:destination="@id/blankChildFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankChildFragment"
+        android:name="com.ayia.navigationsample.BlankChildFragment"
+        android:label="{item}"
+        tools:layout="@layout/fragment_blank_child" >
+        <argument
+            android:name="item"
+            app:argType="string" />
     </fragment>
 </navigation>
